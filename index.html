@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Surya | Full Stack Developer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #dedede;
+            color: #171717;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 35px;
+        }
+
+        .portfolio {
+            width: 100%;
+            max-width: 1150px;
+            min-height: 650px;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            background-color: white;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        /* LEFT COVER */
+
+        .cover {
+            position: relative;
+            padding: 35px;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .yellow-block {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 115px;
+            height: 200px;
+            background-color: #ffca05;
+            z-index: 0;
+        }
+
+        header {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 42px;
+            height: 42px;
+            background-color: #171717;
+            color: #ffca05;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        .name h3 {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .name p {
+            font-size: 11px;
+            color: #666666;
+        }
+
+        .intro {
+            position: relative;
+            z-index: 1;
+            margin-top: 55px;
+        }
+
+        .hello {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+
+        .intro h1 {
+            font-size: clamp(45px, 6vw, 76px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -3px;
+        }
+
+        .intro h1 span {
+            color: #ffca05;
+        }
+
+        .intro h2 {
+            font-size: 18px;
+            margin-top: 8px;
+        }
+
+        .description {
+            max-width: 340px;
+            margin-top: 14px;
+            font-size: 12px;
+            line-height: 1.9;
+            color: #666666;
+        }
+
+        .work-btn {
+            margin-top: 22px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 17px;
+            background-color: #ffca05;
+            color: #171717;
+            font-size: 11px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .work-btn:hover {
+            background-color: #171717;
+            color: white;
+        }
+
+        .photo-box {
+            width: 78%;
+            height: 210px;
+            margin: 28px auto 0;
+            background-color: #f2f2f2;
+            border: 7px solid white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .bottom-text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 25px;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        /* RIGHT SIDE */
+
+        .right-side {
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            border-bottom: 1px solid #eeeeee;
+            padding-bottom: 20px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 7px;
+            text-decoration: none;
+            color: #777777;
+            font-size: 10px;
+            transition: 0.3s;
+        }
+
+        .nav-item i {
+            font-size: 16px;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: #171717;
+        }
+
+        .nav-item.active i {
+            background-color: #ffca05;
+            padding: 9px;
+        }
+
+        .content {
+            margin: auto 0;
+            padding: 50px 0;
+        }
+
+        .section-number {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #777777;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .section-number div {
+            width: 40px;
+            height: 3px;
+            background-color: #ffca05;
+        }
+
+        .content h2 {
+            margin-top: 25px;
+            font-size: clamp(27px, 3vw, 40px);
+            line-height: 1.35;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .content h2 span {
+            display: block;
+            background-color: #ffca05;
+            width: fit-content;
+            padding: 0 8px;
+        }
+
+        .content>p {
+            margin-top: 20px;
+            max-width: 420px;
+            color: #666666;
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            padding: 20px 15px;
+            /* border: 1px solid #eeeeee; */
+            /* border: 1px solid black; */
+            border: #171717 solid 5px;
+        }
+
+        .info-card i {
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+
+        .info-card h3 {
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        .info-card p {
+            font-size: 10px;
+            color: #666666;
+            line-height: 1.8;
+        }
+
+        .yellow-card {
+            background-color: #ffca05;
+            /* border-color: #ffca05; */
+            border: #171717 solid 5px;
+        }
+
+        .yellow-card p {
+            color: #333333;
+        }
+
+        .skills-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 25px;
+        }
+
+        .skills-line span {
+            border: 1px solid #e7e7e7;
+            padding: 7px 9px;
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eeeeee;
+            padding-top: 20px;
+            font-size: 9px;
+            color: #777777;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #171717;
+            font-size: 15px;
+        }
+
+        .social-links a:hover {
+            color: #d6a900;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 850px) {
+            body {
+                padding: 20px;
+            }
+
+            .portfolio {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cover,
+            .right-side {
+                padding: 25px;
+            }
+
+            .navbar {
+                flex-wrap: wrap;
+            }
+
+            .photo-box {
+                width: 90%;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+                align-items: flex-start;
+            }
+
+            .portfolio {
+                grid-template-columns: 1fr;
+            }
+
+            .cover {
+                min-height: 620px;
+                padding: 25px;
+            }
+
+            .right-side {
+                min-height: 580px;
+                padding: 25px;
+            }
+
+            .intro {
+                margin-top: 45px;
+            }
+
+            .intro h1 {
+                font-size: 60px;
+            }
+
+            .photo-box {
+                width: 75%;
+                height: 200px;
+            }
+
+            .content {
+                padding: 45px 0;
+            }
+
+            .content h2 {
+                font-size: 32px;
+            }
+
+            .nav-item {
+                font-size: 9px;
+            }
+
+            .nav-item i {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 360px) {
+
+            .cover,
+            .right-side {
+                padding: 18px;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .intro h1 {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="portfolio">
+
+        <!-- LEFT SIDE: PORTFOLIO COVER -->
+        <section class="cover">
+
+            <div class="yellow-block"></div>
+
+            <header>
+                <div class="logo">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+
+                <div class="name">
+                    <h3>SURYA P</h3>
+                    <p>Full Stack Developer</p>
+                </div>
+            </header>
+
+            <div class="intro">
+                <p class="hello">HELLO, I'M</p>
+
+                <h1>SURYA</h1>
+
+                <h2>Full Stack Developer</h2>
+
+                <p class="description">
+                    I create responsive websites and build
+                    modern web experiences using HTML, CSS,
+                    JavaScript, React and Python.
+                </p>
+
+                <a href="projects.html" class="work-btn">
+                    Explore My Work
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <!-- YOUR PHOTO -->
+            <div class="photo-box">
+                <img src="" alt="Surya - Full Stack Developer">
+            </div>
+
+            <div class="bottom-text">
+                <p>DESIGN. DEVELOP. CREATE.</p>
+                <span>01 / 05</span>
+            </div>
+
+        </section>
+
+        <!-- RIGHT SIDE: NAVIGATION AND CONTENT -->
+        <section class="right-side">
+
+            <nav class="navbar">
+
+                <a href="index.html" class="nav-item active">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="about.html" class="nav-item">
+                    <i class="fa-solid fa-user"></i>
+                    <span>About</span>
+                </a>
+
+                <a href="skills.html" class="nav-item">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Skills</span>
+                </a>
+
+                <a href="projects.html" class="nav-item">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Projects</span>
+                </a>
+
+                <a href="contact.html" class="nav-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+
+            </nav>
+
+            <div class="content">
+
+                <div class="section-number">
+                    <span>01</span>
+                    <div></div>
+                    <span>WELCOME</span>
+                </div>
+
+                <h2>Turning Ideas Into
+                    <span>Digital Reality.</span>
+                </h2>
+
+                <p>
+                    Welcome to my creative space! I'm a Full Stack
+                    Developer passionate about designing clean
+                    interfaces and developing useful web applications.
+                </p>
+
+                <div class="info-cards">
+
+                    <div class="info-card">
+                        <i class="fa-solid fa-laptop-code"></i>
+                        <h3>Web Development</h3>
+                        <p>Modern & Responsive Websites</p>
+                    </div>
+
+                    <div class="info-card yellow-card">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <h3>Creative Ideas</h3>
+                        <p>Simple Ideas, Smart Solutions</p>
+                    </div>
+
+                </div>
+
+                <!-- <div class="skills-line">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JAVASCRIPT</span>
+                    <span>REACT</span>
+                    <span>PYTHON</span>
+                </div> -->
+
+            </div>
+
+            <footer>
+                <span>© 2026 SURYA P</span>
+
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                    <a href="mailto:yourmail@example.com" aria-label="Email">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+            </footer>
+
+        </section>
+
+    </div>
+
+</body>
+
+</html>
